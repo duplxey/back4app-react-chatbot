@@ -1,60 +1,51 @@
 import React, {useEffect, useState} from "react";
 import {Box, Button, Card, CardContent, Grid, TextField} from "@mui/material";
 import Message from "./components/Message";
+import axios from "axios";
+
+const baseURL = "https://chatbot.b4a.app/";
 
 function App() {
 
   const messagesListRef = React.createRef();
   const [messageInput, setMessageInput] = useState("");
-  const [messages, setMessages] = useState([
-    {
-      content: "Hi there! 👋 I'm your digital assistant. Feel free to ask me anything!",
-      choices: ["Shipping", "Size guide", "Contact Us"],
-      isCustomer: false,
-    },
-    {
-      content: "Shipping",
-      isCustomer: true,
-    },
-    {
-      content: "Orders typically take 2-3 business days to process and in-stock items will usually be delivered in 3-5 days from the date that they ship. Shipping cost is 12$.",
-      isCustomer: false,
-    },
-    {
-      content: "what t-shirt size should i get?",
-      isCustomer: true,
-    },
-    {
-      content: "img[https://i.ibb.co/xDq9LSr/sizeguide.png]",
-      isCustomer: false,
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
 
-  const sendMessage = (message) => {
-    // append the message to the array
+  useEffect(() => {
+    axios.get(baseURL).then(res => {
+      setMessages([
+        res.data,
+      ])
+    })
+  }, []);
+
+  const sendMessage = (content) => {
+    // add the message to the state
     setMessages([
       ...messages,
       {
-        content: message,
+        content: content,
         isCustomer: true,
-      },
+      }
     ]);
 
-    // submit the message to the server
-    console.log(message);
+    // post the request and add the bot response to the state
+    axios.post(baseURL + "ask", {
+      content: content
+    }).then(res => {
+      console.log(res);
+      setMessages(prevState => [
+        ...prevState,
+        res.data,
+      ]);
+    });
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     sendMessage(messageInput);
-
-    // clear the message input
     setMessageInput("");
-  }
-
-  const handleChoice = (choice) => {
-    sendMessage(choice);
   }
 
   useEffect(() => {
@@ -83,9 +74,10 @@ function App() {
                 <Message
                   key={index}
                   content={message.content}
+                  image={message.image}
                   isCustomer={message.isCustomer}
                   choices={message.choices}
-                  handleChoice={handleChoice}
+                  handleChoice={sendMessage}
                 />
               ))}
             </Box>

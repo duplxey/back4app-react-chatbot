@@ -18,12 +18,11 @@ export default function Message(props) {
           </Avatar>
         )}
         <Box>
-          {props.content.startsWith("img[") ? (
-            <img src={props.content.replace("img[", "").replace("]", "")} alt="Bot response" style={{width: "100%"}}/>
-          ) : (
-            <Typography gutterBottom variant="body2" component="div" sx={{mt: 1.5}}>
-              {props.content}
-            </Typography>
+          <Typography gutterBottom variant="body2" component="div" sx={{mt: 1.5}}>
+            {props.content}
+          </Typography>
+          {props.image && (
+            <img src={props.image} alt="Bot response" style={{width: "100%"}}/>
           )}
           {!props.isCustomer && props.choices && (
             <Box sx={{mt: 1}}>
