@@ -2,7 +2,6 @@ app.get("/", async (req, res) => {
   // fetch the settings and the default choices
   const query = new Parse.Query("BotSettings");
   const settings = await query.first();
-
   res.send({
     content: settings.get('welcomeContent'),
     choices: settings.get('welcomeChoices'),
@@ -11,7 +10,7 @@ app.get("/", async (req, res) => {
 
 app.post("/ask", async (req, res) => {
   let content = req.body.content.trim().toLowerCase();
-  content = content.replaceAll("[\.\,\?\!]", "");  // remove punctuation
+  content = content.replace(/[.,?!]/, "");  // remove punctuation
 
   // check for exact matches
   const exactQuery = new Parse.Query("BotResponse");
@@ -26,7 +25,7 @@ app.post("/ask", async (req, res) => {
     })
   }
 
-  // split the messsage and check for keyword matches
+  // split the message and check for keyword matches
   const words = content.split(" ");
   for (let i = 0; i < words.length; i++) {
     const keywordQuery = new Parse.Query("BotResponse");
