@@ -1,0 +1,78 @@
+{
+"results" : [
+
+  {
+    "objectId": "ZAqKTzvyRx",
+    "requestKeywords": [
+      "ship",
+      "post",
+      "send",
+      "europe",
+      "united states"
+    ],
+    "responseChoices": [
+      "Europe",
+      "US"
+    ],
+    "requestExact": "shipping",
+    "responseContent": "Orders typically take 2-3 business days to process and in-stock items will usually be delivered in 3-5 days from the date that they ship. We ship worldwide -- shipping cost is 12$.",
+    "createdAt": "2023-01-23T14:26:19.391Z",
+    "updatedAt": "2023-01-23T18:44:57.305Z"
+  },
+  {
+    "objectId": "avzwlE3DAc",
+    "requestExact": "europe",
+    "responseContent": "Shipping cost for EU is 20$.",
+    "createdAt": "2023-01-23T14:26:45.349Z",
+    "updatedAt": "2023-01-23T18:57:26.880Z",
+    "requestKeywords": [
+      "europe",
+      "eu"
+    ]
+  },
+  {
+    "objectId": "ttVIC8LCc2",
+    "requestKeywords": [
+      "united states",
+      "us",
+      "usa"
+    ],
+    "requestExact": "united states",
+    "responseContent": "Shipping costs for the US customers are 10$.",
+    "createdAt": "2023-01-23T14:27:42.454Z",
+    "updatedAt": "2023-01-23T18:57:19.373Z"
+  },
+  {
+    "objectId": "T0jQJOB4dc",
+    "requestKeywords": [
+      "size guide",
+      "size",
+      "xxs",
+      "xs",
+      "s",
+      "m",
+      "l",
+      "xl",
+      "xxl",
+      "xxxl"
+    ],
+    "requestExact": "size guide",
+    "responseContent": "Take a look at our size guide:",
+    "responseImage": "https://i.ibb.co/xDq9LSr/sizeguide.png",
+    "createdAt": "2023-01-23T14:28:36.916Z",
+    "updatedAt": "2023-01-23T18:57:09.770Z"
+  },
+  {
+    "objectId": "DAPWbHMGOu",
+    "requestKeywords": [
+      "email",
+      "phone",
+      "location"
+    ],
+    "requestExact": "contact",
+    "responseContent": "Feel free to contact us via email: support@back4app.com or phone 202-555-0167.",
+    "createdAt": "2023-01-23T14:29:38.063Z",
+    "updatedAt": "2023-01-23T18:17:56.597Z"
+  }
+]
+}
